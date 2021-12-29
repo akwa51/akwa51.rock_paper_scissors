@@ -77,11 +77,12 @@ function playRound(){
             alert (`You Lose ${computerSelection} beats ${userSelection}`);
             userLoss+=1;
         }
+        //Only update count with win or losses
+        playCount+=1;
     }  
     // reset all player choices
     gameOn=false;
     userSelection=computerSelection=null;
-    playCount+=1;
     //Can we play Another Round?
     if (playCount<gameCount) { alert('Play Again!');}
 }
@@ -101,6 +102,22 @@ function displayPlayResults(){
     }else if (userWins==0 && gameDraws==0){
         alert(`Sorry! You lost ${userLoss} times.`); 
     }
+
+
+    // Tell User if he won or lost
+    if (gameCount%2===0) {
+        if (userWins>(gameCount/2)){
+            alert('Congrats! You Finally Won!');}
+        else{
+            alert('Sorry! You Lost Big Time! Try Again'); }
+
+    }else{
+        if (userWins>= Math.round(gameCount/2)){
+            alert('Congrats! You Finally Won!');}
+        else{
+            alert('Sorry! You Lost Big Time! Try Again');}
+    }
+    
 }
 
 //Play the Game
